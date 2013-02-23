@@ -1,0 +1,14 @@
+Revision history for Dancer2-Session-Cookie
+
+0.002     2013-02-22 22:26:31 America/New_York
+
+    [CHANGED]
+
+    - Renamed from Dancer-Session-Factory-Cookie to Dancer2-Session-Cookie
+
+    - Internals updated for new Dancer2 release
+
+0.001     2013-01-24 17:33:57 America/New_York
+
+    - First release
+
