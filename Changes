@@ -1,5 +1,13 @@
 Revision history for Dancer2-Session-Cookie
 
+0.003     2013-05-28 13:42:39 America/New_York
+
+    [FIXED]
+
+    - Fixed Dancer2 dependency version
+
+    - Fixed tests for new, lazy session creation behavior in Dancer2
+
 0.002     2013-02-22 22:26:31 America/New_York
 
     [CHANGED]
