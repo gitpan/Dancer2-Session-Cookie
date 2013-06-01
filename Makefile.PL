@@ -24,7 +24,7 @@ my %WriteMakefileArgs = (
     "Dancer2::Core::Role::SessionFactory" => 0,
     "Dancer2::Core::Types" => 0,
     "Moo" => 0,
-    "Session::Storage::Secure" => 0,
+    "Session::Storage::Secure" => "0.007",
     "strict" => 0,
     "warnings" => 0
   },
@@ -42,7 +42,7 @@ my %WriteMakefileArgs = (
     "Test::TCP" => "1.13",
     "YAML" => 0
   },
-  "VERSION" => "0.003",
+  "VERSION" => "0.004",
   "test" => {
     "TESTS" => "t/*.t"
   }
