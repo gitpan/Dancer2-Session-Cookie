@@ -13,12 +13,12 @@ build_requires:
   LWP::UserAgent: 0
   List::Util: 0
   Test::More: 0.96
-  Test::TCP: 1.13
+  Test::TCP: 1.30
   YAML: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.131490'
+generated_by: 'Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.131560'
 license: apache
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -35,7 +35,7 @@ no_index:
 provides:
   Dancer2::Session::Cookie:
     file: lib/Dancer2/Session/Cookie.pm
-    version: 0.004
+    version: 0.005
 requires:
   Dancer2: 0.03
   Dancer2::Core::Role::SessionFactory: 0
@@ -49,4 +49,4 @@ resources:
   bugtracker: https://github.com/dagolden/dancer2-session-cookie/issues
   homepage: https://metacpan.org/release/Dancer2-Session-Cookie
   repository: git://github.com/dagolden/dancer2-session-cookie.git
-version: 0.004
+version: 0.005

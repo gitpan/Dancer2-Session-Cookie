@@ -4,7 +4,7 @@ use warnings;
 
 package Dancer2::Session::Cookie;
 # ABSTRACT: Dancer 2 session storage in secure cookies
-our $VERSION = '0.004'; # VERSION
+our $VERSION = '0.005'; # VERSION
 
 use Session::Storage::Secure 0.007 ();
 
@@ -97,7 +97,7 @@ Dancer2::Session::Cookie - Dancer 2 session storage in secure cookies
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 

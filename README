@@ -2,7 +2,7 @@ NAME
     Dancer2::Session::Cookie - Dancer 2 session storage in secure cookies
 
 VERSION
-    version 0.004
+    version 0.005
 
 SYNOPSIS
       # In Dancer 2 config.yml file

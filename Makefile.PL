@@ -39,10 +39,10 @@ my %WriteMakefileArgs = (
     "LWP::UserAgent" => 0,
     "List::Util" => 0,
     "Test::More" => "0.96",
-    "Test::TCP" => "1.13",
+    "Test::TCP" => "1.30",
     "YAML" => 0
   },
-  "VERSION" => "0.004",
+  "VERSION" => "0.005",
   "test" => {
     "TESTS" => "t/*.t"
   }
