@@ -3,10 +3,13 @@ use strict;
 use warnings;
 
 package Dancer2::Session::Cookie;
+BEGIN {
+  $Dancer2::Session::Cookie::AUTHORITY = 'cpan:YANICK';
+}
 # ABSTRACT: Dancer 2 session storage in secure cookies
-our $VERSION = '0.005'; # VERSION
-
-use Session::Storage::Secure 0.007 ();
+# VERSION
+$Dancer2::Session::Cookie::VERSION = '0.006';
+use Session::Storage::Secure 0.010 ();
 
 use Moo;
 use Dancer2::Core::Types;
@@ -17,33 +20,37 @@ use Dancer2::Core::Types;
 
 
 has secret_key => (
-  is       => 'ro',
-  isa      => Str,
-  required => 1,
+    is       => 'ro',
+    isa      => Str,
+    required => 1,
 );
 
 
 has default_duration => (
-  is        => 'ro',
-  isa       => Int,
-  predicate => 1,
+    is        => 'ro',
+    isa       => Int,
+    predicate => 1,
 );
 
 has _store => (
-  is      => 'lazy',
-  isa     => InstanceOf ['Session::Storage::Secure'],
-  handles => {
-    '_freeze'   => 'encode',
-    '_retrieve' => 'decode',
-  },
+    is      => 'lazy',
+    isa     => InstanceOf ['Session::Storage::Secure'],
+    handles => {
+        '_freeze'   => 'encode',
+        '_retrieve' => 'decode',
+    },
 );
 
 sub _build__store {
-  my ($self) = @_;
-  my %args = ( secret_key => $self->secret_key );
-  $args{default_duration} = $self->default_duration
-    if $self->has_default_duration;
-  return Session::Storage::Secure->new(%args);
+    my ($self) = @_;
+    my %args = (
+        secret_key             => $self->secret_key,
+        sereal_encoder_options => { snappy => 1, stringify_unknown => 1 },
+        sereal_decoder_options => { validate_utf8 => 1 },
+    );
+    $args{default_duration} = $self->default_duration
+      if $self->has_default_duration;
+    return Session::Storage::Secure->new(%args);
 }
 
 with 'Dancer2::Core::Role::SessionFactory';
@@ -58,10 +65,10 @@ sub generate_id { '' }
 # Cookie generation: serialize the session data into the session ID
 # right before the cookie is generated
 before 'cookie' => sub {
-  my ( $self, %params ) = @_;
-  my $session = $params{session};
-  return unless ref $session && $session->isa("Dancer2::Core::Session");
-  $session->id( $self->_freeze( $session->data, $session->expires ) );
+    my ( $self, %params ) = @_;
+    my $session = $params{session};
+    return unless ref $session && $session->isa("Dancer2::Core::Session");
+    $session->id( $self->_freeze( $session->data, $session->expires ) );
 };
 
 #--------------------------------------------------------------------------#
@@ -89,7 +96,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -97,7 +104,7 @@ Dancer2::Session::Cookie - Dancer 2 session storage in secure cookies
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -115,7 +122,7 @@ version 0.005
 This module implements a session factory for Dancer 2 that stores session state
 within a browser cookie.  Features include:
 
-=over 4
+=over
 
 =item *
 
@@ -125,11 +132,11 @@ Data serialization and compression using L<Sereal>
 
 Data encryption using AES with a unique derived key per cookie
 
-=item *
+=item * 
 
 Enforced expiration timestamp (independent of cookie expiration)
 
-=item *
+=item * 
 
 Cookie integrity protected with a message authentication code (MAC)
 
@@ -160,52 +167,33 @@ generate_id
 
 CPAN modules providing cookie session storage (possibly for other frameworks):
 
-=over 4
+=over
 
-=item *
+=item * 
 
 L<Dancer::Session::Cookie> -- Dancer 1 equivalent to this module
 
-=item *
+=item * 
 
 L<Catalyst::Plugin::CookiedSession> -- encryption only
 
-=item *
+=item * 
 
 L<HTTP::CryptoCookie> -- encryption only
 
-=item *
+=item * 
 
 L<Mojolicious::Sessions> -- MAC only
 
-=item *
+=item * 
 
 L<Plack::Middleware::Session::Cookie> -- MAC only
 
-=item *
+=item * 
 
 L<Plack::Middleware::Session::SerializedCookie> -- really just a framework and you provide the guts with callbacks
 
 =back
-
-=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
-
-=head1 SUPPORT
-
-=head2 Bugs / Feature Requests
-
-Please report any bugs or feature requests through the issue tracker
-at L<https://github.com/dagolden/dancer2-session-cookie/issues>.
-You will be notified automatically of any progress on your issue.
-
-=head2 Source Code
-
-This is open source software.  The code repository is available for
-public review and contribution under the terms of the license.
-
-L<https://github.com/dagolden/dancer2-session-cookie>
-
-  git clone git://github.com/dagolden/dancer2-session-cookie.git
 
 =head1 AUTHOR
 

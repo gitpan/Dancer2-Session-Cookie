@@ -2,7 +2,7 @@ NAME
     Dancer2::Session::Cookie - Dancer 2 session storage in secure cookies
 
 VERSION
-    version 0.005
+    version 0.006
 
 SYNOPSIS
       # In Dancer 2 config.yml file
@@ -57,20 +57,6 @@ SEE ALSO
 
     *   Plack::Middleware::Session::SerializedCookie -- really just a
         framework and you provide the guts with callbacks
-
-SUPPORT
-  Bugs / Feature Requests
-    Please report any bugs or feature requests through the issue tracker at
-    <https://github.com/dagolden/dancer2-session-cookie/issues>. You will be
-    notified automatically of any progress on your issue.
-
-  Source Code
-    This is open source software. The code repository is available for
-    public review and contribution under the terms of the license.
-
-    <https://github.com/dagolden/dancer2-session-cookie>
-
-      git clone git://github.com/dagolden/dancer2-session-cookie.git
 
 AUTHOR
     David Golden <dagolden@cpan.org>

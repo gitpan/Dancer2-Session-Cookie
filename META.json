@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "apache_2_0"
    ],
@@ -13,38 +13,29 @@
       "version" : "2"
    },
    "name" : "Dancer2-Session-Cookie",
-   "no_index" : {
-      "directory" : [
-         "t",
-         "xt",
-         "examples",
-         "corpus"
-      ],
-      "package" : [
-         "DB"
-      ]
-   },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build" : "0.3601"
+         }
+      },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.30"
+            "Module::Build" : "0.3601"
          }
       },
       "develop" : {
          "requires" : {
-            "Pod::Coverage::TrustPod" : "0",
-            "Test::CPAN::Meta" : "0",
-            "Test::Pod" : "1.41",
-            "Test::Pod::Coverage" : "1.08"
+            "version" : "0.9901"
          }
       },
       "runtime" : {
          "requires" : {
-            "Dancer2" : "0.03",
+            "Dancer2" : "0.140001",
             "Dancer2::Core::Role::SessionFactory" : "0",
             "Dancer2::Core::Types" : "0",
             "Moo" : "0",
-            "Session::Storage::Secure" : "0.007",
+            "Session::Storage::Secure" : "0.010",
             "perl" : "5.008001",
             "strict" : "0",
             "warnings" : "0"
@@ -52,15 +43,13 @@
       },
       "test" : {
          "requires" : {
-            "Dancer2" : "0",
-            "ExtUtils::MakeMaker" : "0",
-            "File::Find" : "0",
+            "Dancer2" : "0.140001",
             "File::Spec" : "0",
-            "File::Spec::Functions" : "0",
             "File::Temp" : "0.22",
             "HTTP::Date" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
             "LWP::UserAgent" : "0",
-            "List::Util" : "0",
             "Test::More" : "0.96",
             "Test::TCP" : "1.30",
             "YAML" : "0"
@@ -70,21 +59,28 @@
    "provides" : {
       "Dancer2::Session::Cookie" : {
          "file" : "lib/Dancer2/Session/Cookie.pm",
-         "version" : "0.005"
+         "version" : "0.006"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/dagolden/dancer2-session-cookie/issues"
+         "web" : "https://github.com/PerlDancer/Dancer2-Session-Cookie/issues"
       },
-      "homepage" : "https://metacpan.org/release/Dancer2-Session-Cookie",
+      "homepage" : "http://search.cpan.org/dist/Dancer2-Session-Cookie/",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/dagolden/dancer2-session-cookie.git",
-         "web" : "https://github.com/dagolden/dancer2-session-cookie"
+         "url" : "https://github.com/PerlDancer/Dancer2-Session-Cookie.git",
+         "web" : "https://github.com/PerlDancer/Dancer2-Session-Cookie"
       }
    },
-   "version" : "0.005"
+   "version" : "0.006",
+   "x_authority" : "cpan:YANICK",
+   "x_contributors" : [
+      "Breno G. de Oliveira <garu@cpan.org>",
+      "Russell Jenkins <veryrusty@gmail.com>",
+      "Sawyer X <xsawyerx@cpan.org>",
+      "Yanick Champoux <yanick@babyl.dyndns.org>"
+   ]
 }
 
